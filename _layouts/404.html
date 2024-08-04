@@ -1,8 +1,15 @@
----
-layout: default
----
-<div class="error-container">
-  <h1 class="error-title">404</h1>
-  <p class="error-hint"><strong>Page not found :(</strong></p>
-  <a href="{{ "/" | relative_url }}" class="error-link">Back to {{ site.title }}</a>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+  <body>
+    <div id="container">
+      {% include nav.html %}
+      <h1>404</h1>
+      <p><strong>Page not found :(</strong></p>
+      <p>Sorry! The requested page could not be found.</p>
+      <p><a class="extra" href="/">↵ Click back to home page.</a></p>
+    </div>
+  </body>
+  {% include footer.html %}
+</html>
+

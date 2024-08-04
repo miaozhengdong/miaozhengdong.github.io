@@ -1,70 +1,49 @@
-# jekyll-theme-persephone
+## ExSimple —— 一款极简的Jekyll博客主题
 
-[![Gem Version](https://badge.fury.io/rb/jekyll-theme-persephone.svg)](https://rubygems.org/gems/jekyll-theme-persephone)
+![Jekyll](https://jekyllrb.com/img/logo-2x.png)
 
-Welcome to your new Jekyll theme! In this directory, you'll find the files you need to be able to package up your theme into a gem. Put your layouts in `_layouts`, your includes in `_includes`, your sass files in `_sass` and any other assets in `assets`.
+ExSimple 是一款 [Jekyll](http://jekyllcn.com) 博客主题，它极度简洁、高效，没有任何花哨的东西，让你专注博客文章内容的输出。
 
-To experiment with this code, add some sample content and run `bundle exec jekyll serve` – this directory is setup just like a Jekyll site!
+博客主题的效果可以参考个人博客：[Blog·Loji44](https://loji44.github.io)。
 
-[DEMO with full functions.](http://demo.erl.im)
+>**特别说明：** <br />
+这个博客主题样式是本人在无意间浏览到某个博主的博客站点：<a href="https://blog.tankywoo.com" target="_blank">https://blog.tankywoo.com</a> 时发现的，十分钟意。本来想直接将这个博客主题用到自己博客上，无奈没找到主题源码，也尝试联系过博主(邮件、知乎等)，无果。索性自己上手，直接浏览器上翻看网页源码😂，并从原博客网站下载到样式文件、js文件等资源。
+最后自己上手写Jekyll的`_layouts`和`_includes`文件，以及其他一些布局文件。所以此博客主题不是100%原创，因为本人不是搞前端的，css之类不太擅长，但是写写html模版还是没问题的。
+最后，本主题从 <a href="https://blog.tankywoo.com" target="_blank">https://blog.tankywoo.com</a> 博客网站上直接借用过来的资源：`github.css`、`style.css`、`is.min.js`、`main.js`
 
-[A simple blog demo](https://en.erl.im)
+### 如何使用ExSimple主题？
 
-## Demo
+把博客主题源码仓库clone下来：
 
-| ![home layout](/screenshots/home.png) | ![blog layout](/screenshots/blog.png) |
-| -- | -- |
-| `layout: home` [Demo](https://en.erl.im/blog/) | `layout: blog` [Demo](https://en.erl.im/archive/) |
-| ![post layout](/screenshots/post.png) | ![page layout](/screenshots/page.png) |
-| `layout: post` [Demo](https://en.erl.im/blog/jekyll-theme-persephone.html) | `layout: page` [Demo](https://jekyll-theme-persephone.netlify.app/about.html) |
-| ![archive layout](/screenshots/archive.png)      | ![slides layout](/screenshots/slides.png) |
-| ![book layout](/screenshots/book.png) | ![chapter layout](/screenshots/chapter.png) |
-| <strong style="color: red">*</strong> `layout: book` [Demo](https://jekyll-theme-persephone.netlify.app/corner) | <strong style="color: red">*</strong> `layout: chapter` [Demo](https://jekyll-theme-persephone.netlify.app/corner/1.html) |
-
-The layout with red * relied on a jekyll books generator plugin: [`jekyll-books`](https://github.com/erlzhang/jekyll-books)
-
-## Installation
-
-Add this line to your Jekyll site's `Gemfile`:
-
-```ruby
-gem "jekyll-theme-persephone"
+```bash
+$ git clone https://github.com/loji44/ExSimple.git your_blog
 ```
 
-And add this line to your Jekyll site's `_config.yml`:
+然后在`_post`文件夹下面写博客文章即可，都是遵循Jekyll的目录规范。
 
-```yaml
-theme: jekyll-theme-persephone
+### `_config.yml`配置文件说明
+
+```bash
+title: Blog · Loji44
+url: "https://loji44.github.io"
+baseurl: ""
+
+# 全局顶部导航栏配置。格式："名称=跳转链接"，名称和跳转链接之间用"="分隔。例如 "About=/about.html"
+nav:
+  - About=/about.html
+  - TAGS=/tags.html
+  - RSS=/feed.xml
+  - 🔍SEARCH=/search.html
+
+# 不要动这个配置：根据tag生成页面
+plugins:
+  - jekyll-archives
+# 不要动这个配置：根据tag生成页面
+jekyll-archives:
+  enabled: ['tags']
+  layout: tag_post_list
+  permalinks:
+    tag: '/tags/:name.html'
 ```
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install jekyll-theme-persephone
-
-## Usage
-
-- [Settings](/_config.yml)
-- [Layouts](/docs/layouts.md)
-- [Comments](/docs/comments.md)
-- [`jekyll-books` generator](/docs/books.md)
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/erlzhang/jekyll-theme-persephone. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-## Development
-
-To set up your environment to develop this theme, run `bundle install`.
-
-Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
-
-When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
-To add a custom directory to your theme-gem, please edit the regexp in `jekyll-theme-persephone.gemspec` accordingly.
-
-## License
-
-The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+没有更多东西了，上面都有说明。
