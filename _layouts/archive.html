@@ -1,40 +1,33 @@
 ---
-layout: page
-titles:
-  # @start locale config
-  en      : &EN       Archive
-  en-GB   : *EN
-  en-US   : *EN
-  en-CA   : *EN
-  en-AU   : *EN
-  zh-Hans : &ZH_HANS  归档
-  zh      : *ZH_HANS
-  zh-CN   : *ZH_HANS
-  zh-SG   : *ZH_HANS
-  zh-Hant : &ZH_HANT  歸檔
-  zh-TW   : *ZH_HANT
-  zh-HK   : *ZH_HANT
-  ko      : &KO       아카이브
-  ko-KR   : *KO
-  fr      : &FR       Archives
-  fr-BE   : *FR
-  fr-CA   : *FR
-  fr-CH   : *FR
-  fr-FR   : *FR
-  fr-LU   : *FR
-  tr      : &TR       Arşivdekiler
-  # @end locale config
+layout: default
 ---
-
-<div class="layout--archive js-all">
-  {%- include tags.html -%}
-  <div class="js-result layout--archive__result d-none">
-    {%- include article-list.html articles=site.posts type='brief' show_info=true reverse=true group_by='year' -%}
+{%- include header.html -%}
+<main class="archive">
+  <div class="archive__header">
+    <h1>
+      {%- assign about_page_path = site.theme_setting.about_page | default: "index.md" %}
+      {%- assign about_page = site.pages | where: "path", about_page_path | first -%}
+      <a href="{{ about_page.url | relative_url }}">{{ site.author | default: site.title }}</a>
+    </h1>
+    <div class="archive__header_intro">
+      {{ site.description | markdownify }}
+    </div>
+    {%- include icons.html -%}
   </div>
-</div>
-
-<script>
-  {%- include scripts/archieve.js -%}
-</script>
-
-{{ content }}
+  <div class="archive__content">
+		<div class="archive__list">
+			<ul>
+      {%- assign pages = site[page.pages] | default: site.posts -%}
+			{%- for page in pages -%}
+				<li class="archive__item">
+					<a href="{{ page.url | relative_url }}" class="archive__link clearfix">
+            <span class="archive__time">{%- if page.layout == 'book' -%}{{ page.date }}{%- else -%}{{ page.date | date: "%Y-%m-%d" }}{%- endif -%}</span>
+						<span class="archive__title">{{ page.title }}</span>
+					</a>
+				</li>
+			{%- endfor -%}
+			</ul>
+		</div>
+  </div>
+  {%- include footer.html -%}
+</main>
