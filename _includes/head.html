@@ -1,17 +1,24 @@
-<!-- head.html存放页面通用的元数据、css、js等链接资源 -->
-<head>
-  <meta name="generator" content="Hugo 0.79.1" />
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>{{ page.title }} | {{ site.title }}</title>
-  <meta name="description" content="Loji44&#39;s Blog. Focus on Java, Linux, Golang, Git, Vim, Docker, etc." />
-  <meta name="viewport" content="width=device-width" />
-  <link href="/favicon.png" rel="icon" />
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}/feed.xml" />
-  <link rel="stylesheet" href="{{ site.baseurl }}/static/css/github.css" />
-  <link rel="stylesheet" href="{{ site.baseurl }}/static/css/style.css" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-  <script src="//cdn.staticfile.org/jquery/1.11.3/jquery.min.js"></script>
-  <script type="text/javascript" src="{{ site.baseurl }}/static/js/is.min.js"></script>
-  <script type="text/javascript" src="{{ site.baseurl }}/static/js/main.js"></script>
-</head>
+{%- include snippets/get-article-title.html article=page -%}
+<title>{%- if __return -%}{{ __return }} - {{ site.title }}{%- else -%}{{ site.title }}{%- endif -%}</title>
+
+<meta name="description" content="{%- if page.excerpt -%}{{ page.excerpt | strip_html | strip_newlines | strip | truncate: 160 }}{%- else -%}{{ site.description }}{%- endif -%}">
+<link rel="canonical" href="{%- include snippets/page-url.html -%}">
+
+{%- assign _paths_rss = site.paths.rss | default: site.data.variables.default.paths.rss -%}
+{%- include snippets/get-nav-url.html path=_paths_rss -%}
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ __return }}">
+
+{%- include head/favicon.html -%}
+
+{%- include snippets/prepend-baseurl.html path='/assets/css/main.css' -%}
+<link rel="stylesheet" href="{{ __return }}">
+
+{%- include snippets/get-sources.html -%}
+{%- assign _sources = __return -%}
+<link rel="stylesheet" href="{{ _sources.font_awesome }}" >
+
+{%- include head/custom.html -%}
