@@ -1,9 +1,7 @@
 header:
   - title:     归档
     url:        /archive.html
-  - title:      微博
-    url:        https://weibo.com/miaozhengdong2024
-  - title:      豆瓣阅读
-    url:        https://read.douban.com/author/63979376/
-  - title:      Github
-    url:        https://github.com/miaozhengdong2024
+  - title:      YouTube
+    url:        https://www.youtube.com/@miaozhengdong
+  - title:      GitHub
+    url:        https://github.com/miaozhengdong
